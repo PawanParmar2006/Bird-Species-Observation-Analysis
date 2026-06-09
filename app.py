@@ -4,6 +4,8 @@ import streamlit as st
 
 import plotly.express as px
 
+import seaborn as sns
+
 # -------------------------
 # Page Config
 # -------------------------
@@ -133,6 +135,35 @@ fig = px.bar(
     orientation="h"
 )
 
+corr = df[num_cols].corr()
+
+fig, ax = plt.subplots(figsize=(8,5))
+
+sns.heatmap(
+    corr,
+    annot=True,
+    cmap='coolwarm',
+    ax=ax
+)
+
+st.subheader("Correlation Heatmap")
+
+st.pyplot(fig)
+
+
+sample_df = df.sample(1000)
+
+pair_fig = sns.pairplot(
+    sample_df[
+        [
+            'Temperature',
+            'Humidity',
+            'Initial_Three_Min_Cnt'
+        ]
+    ]
+)
+
+st.pyplot(pair_fig.figure)
 st.plotly_chart(fig, width="stretch")
 
 # -------------------------

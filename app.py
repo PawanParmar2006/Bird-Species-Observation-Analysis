@@ -135,6 +135,12 @@ fig = px.bar(
     orientation="h"
 )
 
+num_cols = [
+    'Temperature',
+    'Humidity',
+    'Initial_Three_Min_Cnt'
+]
+
 corr = df[num_cols].corr()
 
 fig, ax = plt.subplots(figsize=(8,5))

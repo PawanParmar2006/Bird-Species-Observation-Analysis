@@ -137,6 +137,8 @@ fig = px.bar(
     orientation="h"
 )
 
+st.plotly_chart(fig, width="stretch")
+
 num_cols = [
     'Temperature',
     'Humidity',
@@ -172,7 +174,6 @@ pair_fig = sns.pairplot(
 )
 
 st.pyplot(pair_fig.figure)
-st.plotly_chart(fig, width="stretch")
 
 # -------------------------
 # Habitat Analysis
